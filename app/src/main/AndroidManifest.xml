@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticaFinal2Trimestre_JorgeGonzaloGalindoAlmena">
         <activity
+            android:name=".InicioActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

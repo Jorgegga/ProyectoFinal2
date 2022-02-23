@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542400610003",
+    "project_id": "practicafinal2jgga",
+    "storage_bucket": "practicafinal2jgga.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542400610003:android:7c63689fc6f8a137c85e26",
+        "android_client_info": {
+          "package_name": "com.example.practicafinal2trimestre_jorgegonzalogalindoalmena"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542400610003-5s61glsn35od0cs2igt8ua9l0n4suicd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV_9FJ7rv71AlORyEQouLEKzFRdnfbvZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542400610003-5s61glsn35od0cs2igt8ua9l0n4suicd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
