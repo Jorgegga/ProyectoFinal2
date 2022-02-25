@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityMainBinding
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.fullscreen.Principal
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.Prefs
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -12,7 +13,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Principal() {
     lateinit var binding : ActivityMainBinding
     private val GOOGLE_SIGN_IN = 150
     lateinit var prefs : Prefs
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         btnListeners()
         comprobarSesion()
+        pantallaCompleta()
     }
     private fun btnListeners(){
         binding.btnLogin.setOnClickListener {
