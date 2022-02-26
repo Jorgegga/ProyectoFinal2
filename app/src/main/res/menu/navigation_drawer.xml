@@ -1,41 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+     <item
+         android:id="@+id/btnInicio"
+         android:icon="@drawable/keystoneback"
+         android:title="Inicio"
+         android:checked="true" />
+
     <item
     android:id="@+id/group1"
-    android:title="Grupo1">
+    android:title="Música">
         <menu>
     <item
-        android:id="@+id/item1"
+        android:id="@+id/btnCanciones"
         android:icon="@drawable/keystoneback"
-        android:title="titulo1"
-        android:checked="true" />
+        android:title="Lista de canciones" />
     <item
-        android:id="@+id/item2"
+        android:id="@+id/btnSubir"
         android:icon="@drawable/keystoneback"
-        android:title="titulo2"/>
-    <item
-        android:id="@+id/item3"
-        android:icon="@drawable/keystoneback"
-        android:title="titulo3"/>
+        android:title="Subir música"/>
         </menu>
 </item>
     <item
         android:id="@+id/group2"
-        android:title="Grupo2">
+        android:title="Otros">
         <menu>
             <item
-                android:id="@+id/item4"
+                android:id="@+id/btnMaps"
                 android:icon="@drawable/keystoneback"
-                android:title="titulo1"
-                android:checked="true" />
+                android:title="Encuentra nuestra tienda" />
             <item
-                android:id="@+id/item5"
+                android:id="@+id/btnWeb"
                 android:icon="@drawable/keystoneback"
-                android:title="titulo2"/>
-            <item
-                android:id="@+id/item6"
-                android:icon="@drawable/keystoneback"
-                android:title="titulo3"/>
+                android:title="Visita nuestra página web"/>
         </menu>
     </item>
 </menu>
