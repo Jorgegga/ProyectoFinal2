@@ -1,18 +1,16 @@
 package com.example.practicafinal2trimestre_jorgegonzalogalindoalmena
 
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityInicioBinding
-import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.fullscreen.Principal
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.maps.MapsFragment
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.webview.WebFragment
 import com.google.android.material.navigation.NavigationView
 
 
@@ -31,6 +29,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         title="Scarlet Perception"
         fragmentPortada = PortadaFragment()
         fragmentMaps = MapsFragment()
+        fragmentWeb = WebFragment()
 
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, fragmentPortada).commit()
     }
@@ -58,18 +57,37 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
+            R.id.btnWeb ->{
+                transaction.replace(R.id.fragmentContainerView, fragmentWeb).commit()
+                transaction.addToBackStack(null)
+                return true
+            }
+
             R.id.btnInicio -> {
                 transaction.replace(R.id.fragmentContainerView, fragmentPortada).commit()
+                transaction.addToBackStack(null)
                 return true
             }
 
             R.id.btnMaps ->{
                 transaction.replace(R.id.fragmentContainerView, fragmentMaps).commit()
+                transaction.addToBackStack(null)
                 return true
             }
             else ->{
                 return false
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount
+
+        if (count == 0) {
+            super.onBackPressed()
+            //additional code
+        } else {
+            supportFragmentManager.popBackStack()
         }
     }
 

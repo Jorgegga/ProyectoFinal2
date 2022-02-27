@@ -26,7 +26,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
 
@@ -34,12 +33,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
         // Add a marker in Sydney and move the camera
-        val tienda = LatLng(36.838600, -2.465152)
+        val tienda = LatLng(36.846133, -2.447345)
         mMap.addMarker(MarkerOptions().position(tienda).title("Localizacion de la tienda de musica"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(tienda))
         enableLocation()
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(tienda, 15f), 4000, null
+            CameraUpdateFactory.newLatLngZoom(tienda, 13f), 3500, null
         )
 
     }
