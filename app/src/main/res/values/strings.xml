@@ -2,7 +2,7 @@
     <string name="app_name">PracticaFinal2Trimestre_JorgeGonzaloGalindoAlmena</string>
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
-    <string name="aaaa">aaaa</string>
+    <string name="tvCorreo">a</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

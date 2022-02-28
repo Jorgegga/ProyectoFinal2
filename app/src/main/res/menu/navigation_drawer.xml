@@ -5,7 +5,8 @@
          android:id="@+id/btnInicio"
          android:icon="@drawable/keystoneback"
          android:title="Inicio"
-         android:checked="true" />
+         android:checked="true"
+         android:enabled="true"/>
 
     <item
     android:id="@+id/group1"
@@ -14,11 +15,13 @@
     <item
         android:id="@+id/btnCanciones"
         android:icon="@drawable/keystoneback"
-        android:title="Lista de canciones" />
+        android:title="Lista de canciones"
+        android:enabled="true"/>
     <item
         android:id="@+id/btnSubir"
         android:icon="@drawable/keystoneback"
-        android:title="Subir música"/>
+        android:title="Subir música"
+        android:enabled="true"/>
         </menu>
 </item>
     <item
@@ -28,11 +31,13 @@
             <item
                 android:id="@+id/btnMaps"
                 android:icon="@drawable/keystoneback"
-                android:title="Encuentra nuestra tienda" />
+                android:title="Encuentra nuestra tienda"
+                android:enabled="true"/>
             <item
                 android:id="@+id/btnWeb"
                 android:icon="@drawable/keystoneback"
-                android:title="Visita nuestra página web"/>
+                android:title="Visita nuestra página web"
+                android:enabled="true"/>
         </menu>
     </item>
 </menu>

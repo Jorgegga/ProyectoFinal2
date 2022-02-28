@@ -13,7 +13,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class MainActivity : Principal() {
+class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     private val GOOGLE_SIGN_IN = 150
     lateinit var prefs : Prefs
@@ -24,7 +24,7 @@ class MainActivity : Principal() {
         setContentView(binding.root)
         btnListeners()
         comprobarSesion()
-        pantallaCompleta()
+
     }
     private fun btnListeners(){
         binding.btnLogin.setOnClickListener {
@@ -42,7 +42,7 @@ class MainActivity : Principal() {
         prefs = Prefs(this)
         val email = prefs.leerEmail()
         if(!email.isNullOrEmpty()){
-            irMenu(email)
+            irMenu()
         }
     }
 
@@ -55,7 +55,8 @@ class MainActivity : Principal() {
                 val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                 FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        irMenu(it.result?.user?.email)
+                        guardarCorreo(it.result?.user?.email)
+                        irMenu()
                     }else{
                         Log.d("Error: ", it.exception.toString())
                     }
@@ -64,12 +65,13 @@ class MainActivity : Principal() {
         }
     }
 
-    private fun irMenu(email: String?){
+    private fun irMenu(){
         val i = Intent(this, InicioActivity::class.java)
-        val bundle = Bundle().apply {
-            putString("EMAIL", email)
-        }
-        i.putExtras(bundle)
         startActivity(i)
+    }
+
+    private fun guardarCorreo(correo: String?){
+        prefs = Prefs(this)
+        prefs.guardarEmail(correo!!)
     }
 }
