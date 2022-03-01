@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databases.CrearFragment
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databases.ReadFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityInicioBinding
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.maps.MapsFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.Prefs
@@ -25,6 +26,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var fragmentMaps : Fragment
     lateinit var fragmentWeb : Fragment
     lateinit var fragmentCrear : Fragment
+    lateinit var fragmentRead : Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         fragmentMaps = MapsFragment()
         fragmentWeb = WebFragment()
         fragmentCrear = CrearFragment()
+        fragmentRead = ReadFragment()
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, fragmentPortada).commit()
 
     }
@@ -75,6 +78,14 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         when(item.itemId){
             R.id.btnInicio -> {
                 transaction.replace(R.id.fragmentContainerView, fragmentPortada).commit()
+                transaction.addToBackStack(null)
+                item.isChecked = true
+                binding.drawerLayout.close()
+                return true
+            }
+
+            R.id.btnCanciones ->{
+                transaction.replace(R.id.fragmentContainerView, fragmentRead).commit()
                 transaction.addToBackStack(null)
                 item.isChecked = true
                 binding.drawerLayout.close()
