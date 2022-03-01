@@ -11,6 +11,7 @@ import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.InicioActiv
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.R
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.MusicaLayoutBinding
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.models.ReadMusica
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.AppUse
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -21,21 +22,24 @@ class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
     private val binding = MusicaLayoutBinding.bind(v)
     lateinit var db: FirebaseDatabase
     lateinit var reference: DatabaseReference
-    lateinit var mediaPlayer: MediaPlayer
+    var mediaPlayer = MediaPlayer()
     var storageFire = FirebaseStorage.getInstance()
     var reproducir = false
 
     fun render(musica : ReadMusica){
         initDb()
-
         binding.tvTitulo.text = musica.nombre
         binding.tvAlbum.text = musica.autor
         binding.btnPlay.setOnClickListener {
-            if(!reproducir) {
+            AppUse.nombre = musica.nombre
+            AppUse.autor = musica.autor
+            AppUse.cancion = musica.ruta
+            AppUse.reproduciendo.value = true
+            AppUse.reproduciendo.value = false
+            /*if(!reproducir) {
                 reproducir = true
                 binding.btnPlay.setImageResource(android.R.drawable.ic_media_pause)
                 var audioUrl = musica.ruta
-                mediaPlayer = MediaPlayer()
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                 try {
                     var storageRef = storageFire.getReferenceFromUrl("$audioUrl.mp3")
@@ -54,14 +58,9 @@ class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
                 mediaPlayer.stop()
                 binding.btnPlay.setImageResource(android.R.drawable.ic_media_play)
                 reproducir = false
-            }
-        }
-    }
 
-    fun fetchAudioUrlFromFirebase(urlMusica : String){
-        var storage = FirebaseStorage.getInstance()
-        var storageRef = storage.getReferenceFromUrl("$urlMusica.mp3")
-        //storageRef.downloadUrl.addOnSuccessListener(OnSuccessListener)
+            }*/
+        }
     }
 
     private fun initDb(){
