@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/btnInicio"
+            android:enabled="true"
+            android:icon="@drawable/keystoneback"
+            android:title="Inicio"
+            android:checked="true"/>
 
-     <item
-         android:id="@+id/btnInicio"
-         android:icon="@drawable/keystoneback"
-         android:title="Inicio"
-         android:checked="true"
-         android:enabled="true"/>
+        <item
+            android:id="@+id/group1"
+            android:title="Música">
+            <menu >
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/btnCanciones"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Lista de canciones" />
+                    <item
+                        android:id="@+id/btnSubir"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Subir música" />
+                </group>
+            </menu>
 
-    <item
-    android:id="@+id/group1"
-    android:title="Música">
-        <menu>
-    <item
-        android:id="@+id/btnCanciones"
-        android:icon="@drawable/keystoneback"
-        android:title="Lista de canciones"
-        android:enabled="true"/>
-    <item
-        android:id="@+id/btnSubir"
-        android:icon="@drawable/keystoneback"
-        android:title="Subir música"
-        android:enabled="true"/>
-        </menu>
-</item>
-    <item
-        android:id="@+id/group2"
-        android:title="Otros">
-        <menu>
-            <item
-                android:id="@+id/btnMaps"
-                android:icon="@drawable/keystoneback"
-                android:title="Encuentra nuestra tienda"
-                android:enabled="true"/>
-            <item
-                android:id="@+id/btnWeb"
-                android:icon="@drawable/keystoneback"
-                android:title="Visita nuestra página web"
-                android:enabled="true"/>
-        </menu>
-    </item>
+        </item>
+        <item
+            android:id="@+id/group2"
+            android:title="Otros">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/btnMaps"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Encuentra nuestra tienda" />
+                    <item
+                        android:id="@+id/btnWeb"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Visita nuestra página web" />
+                </group>
+            </menu>
+        </item>
+    </group>
 </menu>

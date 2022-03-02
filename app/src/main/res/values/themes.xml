@@ -15,5 +15,10 @@
         <item name="android:windowTranslucentStatus">true</item>
 
     </style>
+    <style name="MyThemeOverlay_Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- color used by navigation icon and overflow icon -->
+        <item name="colorOnPrimary">#C8CDD0</item>
+    </style>
+
 
 </resources>

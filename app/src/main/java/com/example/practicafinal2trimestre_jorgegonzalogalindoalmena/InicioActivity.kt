@@ -74,6 +74,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        Log.d("aaaaaaaaaaaa", item.toString())
         transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
             R.id.btnInicio -> {

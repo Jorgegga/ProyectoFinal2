@@ -26,7 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="0dp"
-                app:titleTextColor="#C8CDD0" />
+                app:titleTextColor="#C8CDD0"
+                android:theme="@style/MyThemeOverlay_Toolbar"
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -46,9 +48,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#192229"
         android:visibility="visible"
         app:headerLayout="@layout/header_navigation_drawer"
+        app:itemTextColor="#C8CDD0"
         app:menu="@menu/navigation_drawer"
+        app:subheaderColor="#C8CDD0"
+        app:itemBackground="@drawable/drawer_list_selector"
         tools:visibility="gone" />
 
 
