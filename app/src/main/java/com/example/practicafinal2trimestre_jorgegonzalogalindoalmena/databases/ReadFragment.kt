@@ -82,10 +82,12 @@ class ReadFragment : Fragment() {
                 if(mediaPlayer.currentPosition > 1) {
                         mediaPlayer.start()
                     }else{
-                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+
                         var storageRef = storageFire.getReferenceFromUrl("$audioUrl.mp3")
                         storageRef.downloadUrl.addOnSuccessListener() {
                         var url = it.toString()
+                            mediaPlayer.reset()
+                            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                         mediaPlayer.setDataSource(url)
                         mediaPlayer.prepare()
                         mediaPlayer.start()

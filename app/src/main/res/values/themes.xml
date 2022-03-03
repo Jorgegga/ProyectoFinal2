@@ -19,6 +19,9 @@
         <!-- color used by navigation icon and overflow icon -->
         <item name="colorOnPrimary">#C8CDD0</item>
     </style>
+    <style name="SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 
 
 </resources>
