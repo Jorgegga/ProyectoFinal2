@@ -85,16 +85,16 @@ class ReadFragment : Fragment() {
 
                         var storageRef = storageFire.getReferenceFromUrl("$audioUrl.mp3")
                         storageRef.downloadUrl.addOnSuccessListener() {
-                        var url = it.toString()
+                            var url = it.toString()
                             mediaPlayer.reset()
                             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                        mediaPlayer.setDataSource(url)
-                        mediaPlayer.prepare()
-                        mediaPlayer.start()
-                        binding.tvAutorReproductor.text = AppUse.autor
-                        binding.tvNombreReproductor.text = AppUse.nombre
+                            mediaPlayer.setDataSource(url)
+                            mediaPlayer.prepare()
+                            mediaPlayer.start()
+                            binding.tvAutorReproductor.text = AppUse.autor
+                            binding.tvNombreReproductor.text = AppUse.nombre
+                        }
                     }
-                }
 
             } catch (e: IOException) {
                 e.printStackTrace()
