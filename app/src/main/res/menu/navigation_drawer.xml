@@ -23,6 +23,11 @@
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
                         android:title="Subir música" />
+                    <item
+                        android:id="@+id/btnSubirLocal"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Subir música local" />
                 </group>
             </menu>
 

@@ -7,13 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.R
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.models.ReadMusica
 
-class MusicaAdapter(private val lista: ArrayList<ReadMusica>): RecyclerView.Adapter<MusicaViewHolder>(), View.OnClickListener {
-    lateinit var listener: View.OnClickListener
-
+class MusicaAdapter(private val lista: ArrayList<ReadMusica>): RecyclerView.Adapter<MusicaViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicaViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val v = inflater.inflate(R.layout.musica_layout, parent, false)
-        v.setOnClickListener(this)
         return MusicaViewHolder(v)
     }
 
@@ -26,7 +23,4 @@ class MusicaAdapter(private val lista: ArrayList<ReadMusica>): RecyclerView.Adap
         return lista.size
     }
 
-    override fun onClick(p0: View?) {
-
-    }
 }

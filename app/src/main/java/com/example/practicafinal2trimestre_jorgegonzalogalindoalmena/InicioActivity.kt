@@ -15,6 +15,7 @@ import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databases.R
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityInicioBinding
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.maps.MapsFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.Prefs
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.room.CrearRoomFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.webview.WebFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -27,6 +28,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var fragmentWeb : Fragment
     lateinit var fragmentCrear : Fragment
     lateinit var fragmentRead : Fragment
+    lateinit var fragmentCrearLocal : Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         fragmentWeb = WebFragment()
         fragmentCrear = CrearFragment()
         fragmentRead = ReadFragment()
+        fragmentCrearLocal = CrearRoomFragment()
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, fragmentPortada).commit()
 
     }
@@ -74,7 +77,6 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        Log.d("aaaaaaaaaaaa", item.toString())
         transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
             R.id.btnInicio -> {
@@ -95,6 +97,14 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
             R.id.btnSubir ->{
                 transaction.replace(R.id.fragmentContainerView, fragmentCrear).commit()
+                transaction.addToBackStack(null)
+                item.isChecked = true
+                binding.drawerLayout.close()
+                return true
+            }
+
+            R.id.btnSubirLocal ->{
+                transaction.replace(R.id.fragmentContainerView, fragmentCrearLocal).commit()
                 transaction.addToBackStack(null)
                 item.isChecked = true
                 binding.drawerLayout.close()

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".databases.CrearFragment">
+    tools:context=".room.CrearRoomFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,13 +18,13 @@
             android:layout_marginTop="227dp"
             android:text="Nombre: "
             android:textColor="#C8CDD0"
-            app:layout_constraintEnd_toStartOf="@+id/insertarNombre"
+            app:layout_constraintEnd_toStartOf="@+id/insertarNombreLocal"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/insertarNombre"
+            android:id="@+id/insertarNombreLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -41,15 +41,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="83dp"
-            android:text="Autor: "
+            android:text="Autor:"
             android:textColor="#C8CDD0"
-            app:layout_constraintEnd_toStartOf="@+id/insertarAutor"
+            app:layout_constraintEnd_toStartOf="@+id/insertarAutorLocal"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
-            android:id="@+id/insertarAutor"
+            android:id="@+id/insertarAutorLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -72,7 +72,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnCrear"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/insertarAutor" />
+            app:layout_constraintTop_toBottomOf="@+id/insertarAutorLocal" />
 
         <Button
             android:id="@+id/btnCrear"
@@ -88,4 +88,5 @@
             app:layout_constraintTop_toTopOf="@+id/btnReset" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

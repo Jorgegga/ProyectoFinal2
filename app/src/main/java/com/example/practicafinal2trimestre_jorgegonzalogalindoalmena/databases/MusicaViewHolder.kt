@@ -22,9 +22,6 @@ class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
     private val binding = MusicaLayoutBinding.bind(v)
     lateinit var db: FirebaseDatabase
     lateinit var reference: DatabaseReference
-    var mediaPlayer = MediaPlayer()
-    var storageFire = FirebaseStorage.getInstance()
-    var reproducir = false
 
     fun render(musica : ReadMusica){
         initDb()
@@ -36,30 +33,6 @@ class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
             AppUse.cancion = musica.ruta
             AppUse.reproduciendo.value = true
             AppUse.reproduciendo.value = false
-            /*if(!reproducir) {
-                reproducir = true
-                binding.btnPlay.setImageResource(android.R.drawable.ic_media_pause)
-                var audioUrl = musica.ruta
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                try {
-                    var storageRef = storageFire.getReferenceFromUrl("$audioUrl.mp3")
-                    storageRef.downloadUrl.addOnSuccessListener() {
-                        var url = it.toString()
-                        mediaPlayer.setDataSource(url)
-                        mediaPlayer.prepare()
-                        mediaPlayer.start()
-                    }
-
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-                Log.d("Escuchando audio...", "Escuchando audio...")
-            }else{
-                mediaPlayer.stop()
-                binding.btnPlay.setImageResource(android.R.drawable.ic_media_play)
-                reproducir = false
-
-            }*/
         }
     }
 

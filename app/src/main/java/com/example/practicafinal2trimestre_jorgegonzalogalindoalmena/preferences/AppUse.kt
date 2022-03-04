@@ -14,6 +14,7 @@ class AppUse: Application() {
         //lateinit var DB: MyDataBase
         lateinit var prefs: Prefs
         var reproduciendo : MutableLiveData<Boolean> = MutableLiveData(false)
+        var reproduciendoLocal : MutableLiveData<Boolean> = MutableLiveData(false)
         var nombre = ""
         var autor = ""
         var cancion = ""
