@@ -18,6 +18,7 @@ import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.room.CrearRoomFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.webview.WebFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -127,6 +128,14 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 return true
             }
 
+            R.id.btnSesion ->{
+                val pref= Prefs(this)
+                FirebaseAuth.getInstance().signOut()
+                pref.borrarTodo()
+                finish()
+                return true
+            }
+
             else ->{
                 return false
             }
@@ -144,8 +153,6 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
-    companion object{
 
-    }
 
 }

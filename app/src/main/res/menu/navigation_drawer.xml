@@ -47,6 +47,11 @@
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
                         android:title="Visita nuestra página web" />
+                    <item
+                        android:id="@+id/btnSesion"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Cerrar sesión" />
                 </group>
             </menu>
         </item>
