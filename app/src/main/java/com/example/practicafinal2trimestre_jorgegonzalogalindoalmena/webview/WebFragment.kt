@@ -14,7 +14,7 @@ import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding
 
 class WebFragment : Fragment() {
     lateinit var binding: FragmentWebBinding
-    val URL = "https://es.touhouwiki.net/wiki/Dateless_Bar_%22Old_Adam%22"
+    val URL = "https://www.youtube.com/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

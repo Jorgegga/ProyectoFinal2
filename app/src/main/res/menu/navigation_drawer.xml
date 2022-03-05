@@ -32,6 +32,27 @@
             </menu>
 
         </item>
+
+
+        <item
+            android:id="@+id/group3"
+            android:title="Usuario">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/btnPerfil"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Cambiar foto perfil" />
+                    <item
+                        android:id="@+id/btnSesion"
+                        android:enabled="true"
+                        android:icon="@drawable/keystoneback"
+                        android:title="Cerrar sesión" />
+                </group>
+            </menu>
+        </item>
+
         <item
             android:id="@+id/group2"
             android:title="Otros">
@@ -47,11 +68,6 @@
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
                         android:title="Visita nuestra página web" />
-                    <item
-                        android:id="@+id/btnSesion"
-                        android:enabled="true"
-                        android:icon="@drawable/keystoneback"
-                        android:title="Cerrar sesión" />
                 </group>
             </menu>
         </item>

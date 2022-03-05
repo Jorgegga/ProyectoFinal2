@@ -4,38 +4,57 @@ package com.example.practicafinal2trimestre_jorgegonzalogalindoalmena
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.camara.CamaraFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databases.CrearFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databases.ReadFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityInicioBinding
+import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.glide.GlideApp
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.maps.MapsFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.Prefs
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.room.CrearRoomFragment
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.webview.WebFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 
 class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
     lateinit var binding : ActivityInicioBinding
     lateinit var transaction : FragmentTransaction
+    lateinit var reference: DatabaseReference
+    lateinit var db: FirebaseDatabase
+    var storageFire = FirebaseStorage.getInstance()
+
     lateinit var fragmentPortada : Fragment
     lateinit var fragmentMaps : Fragment
     lateinit var fragmentWeb : Fragment
     lateinit var fragmentCrear : Fragment
     lateinit var fragmentRead : Fragment
     lateinit var fragmentCrearLocal : Fragment
+    lateinit var fragmentCamara : Fragment
+
+    val user = Firebase.auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setToolbar()
+        initDb()
         setHeader()
         title="Scarlet Perception"
         fragmentPortada = PortadaFragment()
@@ -44,6 +63,7 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         fragmentCrear = CrearFragment()
         fragmentRead = ReadFragment()
         fragmentCrearLocal = CrearRoomFragment()
+        fragmentCamara = CamaraFragment()
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, fragmentPortada).commit()
 
     }
@@ -74,6 +94,23 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var header = navView.getHeaderView(0)
         var tvCorreo = header.findViewById<TextView>(R.id.tvCorreo)
         tvCorreo.text = prefs.leerEmail()
+
+        var referencia2 = ""
+        reference.child(user!!.uid).child("ruta").get().addOnSuccessListener {
+            if (it.value == null) {
+                header.findViewById<ImageView>(R.id.ivPerfil).setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        this,
+                        R.drawable.keystoneback
+                    )
+                )
+            } else {
+                referencia2 = it.value as String
+                val gsReference2 = storageFire.getReferenceFromUrl(referencia2 + ".png")
+                val option = RequestOptions().error(R.drawable.keystoneback)
+                GlideApp.with(this).load(gsReference2).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).apply(option).into(header.findViewById<ImageView>(R.id.ivPerfil))
+            }
+        }
 
     }
 
@@ -136,11 +173,20 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 return true
             }
 
+            R.id.btnPerfil ->{
+                transaction.replace(R.id.fragmentContainerView, fragmentCamara).commit()
+                transaction.addToBackStack(null)
+                item.isChecked = true
+                binding.drawerLayout.close()
+                return true
+            }
+
             else ->{
                 return false
             }
         }
     }
+
 
     override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
@@ -153,6 +199,9 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
-
+    private fun initDb(){
+        db = FirebaseDatabase.getInstance("https://practicafinal2jgga-default-rtdb.firebaseio.com/")
+        reference = db.getReference("perfil")
+    }
 
 }
