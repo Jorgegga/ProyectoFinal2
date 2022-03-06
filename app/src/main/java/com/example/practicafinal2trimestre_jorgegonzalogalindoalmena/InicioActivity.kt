@@ -2,7 +2,11 @@ package com.example.practicafinal2trimestre_jorgegonzalogalindoalmena
 
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.TextAppearanceSpan
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Display
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -112,6 +116,35 @@ class InicioActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
         }
 
+        val display: Display = windowManager.defaultDisplay
+        val outMetrics = DisplayMetrics()
+        display.getMetrics(outMetrics)
+
+        val density = resources.displayMetrics.density
+        val dpHeight = outMetrics.heightPixels / density
+        val dpWidth = outMetrics.widthPixels / density
+
+        if(dpWidth >= 720){
+            cambiarSubtitulos()
+        }
+
+    }
+
+    fun cambiarSubtitulos(){
+        var navView = findViewById<NavigationView>(R.id.nav_view)
+        var menu = navView.menu
+        var music = menu.findItem(R.id.group1)
+        var user = menu.findItem(R.id.group2)
+        var others = menu.findItem(R.id.group3)
+        var s = SpannableString(music.title)
+        s.setSpan(TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length, 0)
+        music.setTitle(s)
+        s = SpannableString(user.title)
+        s.setSpan(TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length, 0)
+        user.setTitle(s)
+        s = SpannableString(others.title)
+        s.setSpan(TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length, 0)
+        others.setTitle(s)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

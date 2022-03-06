@@ -26,8 +26,10 @@
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnLogin"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_marginBottom="272dp"
+                app:buttonSize="wide"
+                app:colorScheme="dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -44,7 +46,8 @@
                 app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/logo"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

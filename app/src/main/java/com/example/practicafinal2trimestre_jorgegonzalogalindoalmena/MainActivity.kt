@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.size
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.ActivityMainBinding
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.fullscreen.Principal
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.preferences.Prefs
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton.SIZE_WIDE
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
