@@ -5,29 +5,29 @@
             android:id="@+id/btnInicio"
             android:enabled="true"
             android:icon="@drawable/keystoneback"
-            android:title="Inicio"
+            android:title="@string/tvInicio"
             android:checked="true"/>
 
         <item
             android:id="@+id/group1"
-            android:title="Música">
+            android:title="@string/tvMusica">
             <menu >
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/btnCanciones"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Lista de canciones" />
+                        android:title="@string/tvListaMusica" />
                     <item
                         android:id="@+id/btnSubir"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Subir música" />
+                        android:title="@string/tvSubirMusica" />
                     <item
                         android:id="@+id/btnSubirLocal"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Subir música local" />
+                        android:title="@string/tvSubirMusicaLocal" />
                 </group>
             </menu>
 
@@ -36,38 +36,38 @@
 
         <item
             android:id="@+id/group3"
-            android:title="Usuario">
+            android:title="@string/tvUsuario">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/btnPerfil"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Cambiar foto perfil" />
+                        android:title="@string/tvCambiarFoto" />
                     <item
                         android:id="@+id/btnSesion"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Cerrar sesión" />
+                        android:title="@string/tvCerrarSesión" />
                 </group>
             </menu>
         </item>
 
         <item
             android:id="@+id/group2"
-            android:title="Otros">
+            android:title="@string/tvOtros">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/btnMaps"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Encuentra nuestra tienda" />
+                        android:title="@string/tvMaps" />
                     <item
                         android:id="@+id/btnWeb"
                         android:enabled="true"
                         android:icon="@drawable/keystoneback"
-                        android:title="Visita nuestra página web" />
+                        android:title="@string/tvWeb" />
                 </group>
             </menu>
         </item>

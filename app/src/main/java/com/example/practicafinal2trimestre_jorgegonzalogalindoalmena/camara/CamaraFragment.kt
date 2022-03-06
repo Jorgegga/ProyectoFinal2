@@ -14,7 +14,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +27,7 @@ import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.R
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.databinding.FragmentCamaraBinding
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.glide.GlideApp
 import com.example.practicafinal2trimestre_jorgegonzalogalindoalmena.models.CrearFoto
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -90,6 +94,28 @@ class CamaraFragment : Fragment() {
         }
     }
 
+    private fun perfilInicio(){
+        var navView = requireActivity().findViewById<NavigationView>(R.id.nav_view)
+        var header = navView.getHeaderView(0)
+
+        var referencia2 = ""
+        reference.child(user!!.uid).child("ruta").get().addOnSuccessListener {
+            if (it.value == null) {
+                header.findViewById<ImageView>(R.id.ivPerfil).setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.keystoneback
+                    )
+                )
+            } else {
+                referencia2 = it.value as String
+                val gsReference2 = storageFire.getReferenceFromUrl(referencia2 + ".png")
+                val option = RequestOptions().error(R.drawable.keystoneback)
+                GlideApp.with(this).load(gsReference2).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).apply(option).into(header.findViewById<ImageView>(R.id.ivPerfil))
+            }
+        }
+    }
+
     private fun isPermisosConcedidos(): Boolean {
         return (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
     }
@@ -104,7 +130,7 @@ class CamaraFragment : Fragment() {
                 if(grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
                     tomarFoto()
                 }else{
-                    Toast.makeText(context, "Has rechazado los permisos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -115,7 +141,7 @@ class CamaraFragment : Fragment() {
         if(checkPermisos != PackageManager.PERMISSION_GRANTED){
             requestPermissions(arrayOf(Manifest.permission.CAMERA), PERMISO_CODE)
         }else{
-            Toast.makeText(requireContext(), "No has proporcionado permisos de camara", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.noHasProporcionadoPermisos), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -159,14 +185,15 @@ class CamaraFragment : Fragment() {
             val imageRef = storageRef.child("proyecto/perfil/${user?.uid}.png")
             val uploadTask = imageRef.putFile(mUri)
             uploadTask.addOnFailureListener{
-                Toast.makeText(requireContext(), "No se ha podido subir el archivo", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), resources.getString(R.string.noSeHaPodidoSubirElArchivo), Toast.LENGTH_LONG).show()
             }.addOnSuccessListener { taskSnapshot ->
                 reference.child(user!!.uid).setValue(CrearFoto("gs://practicafinal2jgga.appspot.com/proyecto/perfil/${user!!.uid}"))
-                Toast.makeText(requireContext(), "Se ha actualizado la foto correctamnete", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), resources.getString(R.string.fotoActualizada), Toast.LENGTH_LONG).show()
+                perfil()
+                perfilInicio()
             }
         }
     }
-
 
     private fun initDb(){
         db = FirebaseDatabase.getInstance("https://practicafinal2jgga-default-rtdb.firebaseio.com/")

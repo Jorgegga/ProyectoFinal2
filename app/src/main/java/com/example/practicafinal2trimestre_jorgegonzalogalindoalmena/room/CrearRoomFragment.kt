@@ -42,11 +42,7 @@ class CrearRoomFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val allMusic = database.MusicaDao().getAllMusic()
         listeners()
-        allMusic.forEach{
-            Log.d("aaaaaa", it.musica)
-        }
     }
 
     private fun subirMusica(){
@@ -62,7 +58,8 @@ class CrearRoomFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK){
             database.MusicaDao().insertMusic(Musica(nombre = binding.insertarNombreLocal.text.toString(), autor = binding.insertarAutorLocal.text.toString(), musica = data!!.data!!.toString()))
-            Toast.makeText(context, "Se ha subido el audio de forma local", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, resources.getString(R.string.audioSubido), Toast.LENGTH_LONG).show()
+            reset()
         }
     }
 
@@ -73,7 +70,7 @@ class CrearRoomFragment : Fragment() {
                 if(comprobarVacios()) {
                     subirMusica()
                 }else{
-                    Toast.makeText(context, "Tienes algun campo vacio", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, resources.getString(R.string.campoVacio), Toast.LENGTH_LONG).show()
                 }
             }else{
                 pedirPermisos()
@@ -104,7 +101,7 @@ class CrearRoomFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.S)
     private fun pedirPermisos(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), android.Manifest.permission.MANAGE_EXTERNAL_STORAGE)){
-            Toast.makeText(context, "Debe activar los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, resources.getString(R.string.darPermisos), Toast.LENGTH_SHORT).show()
         }else{
             requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), PERMISO_CODE)
         }
@@ -121,11 +118,11 @@ class CrearRoomFragment : Fragment() {
                     if(comprobarVacios()){
                         subirMusica()
                     }else{
-                        Toast.makeText(context, "Algun campo esta vacio", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, resources.getString(R.string.campoVacio), Toast.LENGTH_LONG).show()
                     }
 
                 }else{
-                    Toast.makeText(context, "Has rechazado los permisos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
                 }
             }
         }

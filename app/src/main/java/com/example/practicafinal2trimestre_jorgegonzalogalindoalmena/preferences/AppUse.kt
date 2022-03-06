@@ -7,11 +7,7 @@ import java.util.prefs.Preferences
 
 class AppUse: Application() {
     companion object{
-        val BASE="baseUsuarios"
-        val TABLA = "tablaUsuarios"
-        val VERSION = 1
         lateinit var appContext : Context
-        //lateinit var DB: MyDataBase
         lateinit var prefs: Prefs
         var reproduciendo : MutableLiveData<Boolean> = MutableLiveData(false)
         var reproduciendoLocal : MutableLiveData<Boolean> = MutableLiveData(false)
@@ -24,6 +20,5 @@ class AppUse: Application() {
         super.onCreate()
         prefs = Prefs(applicationContext)
         appContext = applicationContext
-        //DB = MyDataBase()
     }
 }

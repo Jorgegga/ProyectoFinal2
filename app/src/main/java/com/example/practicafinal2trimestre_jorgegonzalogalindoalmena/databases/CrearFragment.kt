@@ -67,7 +67,7 @@ class CrearFragment : Fragment() {
                 if(comprobarVacios()) {
                     subirMusica()
                 }else{
-                    Toast.makeText(context, "Tienes algun campo vacio", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, resources.getString(R.string.campoVacio), Toast.LENGTH_LONG).show()
                 }
             }else{
                 pedirPermisos()
@@ -102,11 +102,11 @@ class CrearFragment : Fragment() {
             val musicRef = storageRef.child("proyecto/musica/$numeroRandom.mp3")
             val uploadTask = musicRef.putFile(path!!)
             uploadTask.addOnFailureListener{
-                Log.d("Fallo: ", "Ha pasado algo")
+                Toast.makeText(context, resources.getString(R.string.noSeHaPodidoSubirElArchivo), Toast.LENGTH_LONG).show()
             }.addOnSuccessListener { taskSnapshot ->
                 Log.d("Conseguido: ", "Se ha subido")
                 reference.child(numeroRandom).setValue(CrearMusica("gs://practicafinal2jgga.appspot.com/proyecto/musica/$numeroRandom", binding.insertarNombre.text.toString(), binding.insertarAutor.text.toString(), numeroRandom))
-                Toast.makeText(context, "Se ha subido el audio", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, resources.getString(R.string.audioSubido), Toast.LENGTH_LONG).show()
                 reset()
             }
         }
@@ -131,7 +131,7 @@ class CrearFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.S)
     private fun pedirPermisos(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), android.Manifest.permission.MANAGE_EXTERNAL_STORAGE)){
-            Toast.makeText(context, "Debe activar los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
         }else{
             requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), PERMISO_CODE)
         }
@@ -148,11 +148,11 @@ class CrearFragment : Fragment() {
                     if(comprobarVacios()){
                         subirMusica()
                     }else{
-                        Toast.makeText(context, "Algun campo esta vacio", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, resources.getString(R.string.campoVacio), Toast.LENGTH_LONG).show()
                     }
 
                 }else{
-                    Toast.makeText(context, "Has rechazado los permisos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
                 }
             }
         }

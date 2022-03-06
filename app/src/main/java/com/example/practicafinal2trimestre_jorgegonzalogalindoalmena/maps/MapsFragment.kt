@@ -34,7 +34,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true
         // Add a marker in Sydney and move the camera
         val tienda = LatLng(36.846133, -2.447345)
-        mMap.addMarker(MarkerOptions().position(tienda).title("Localizacion de la tienda de musica"))
+        mMap.addMarker(MarkerOptions().position(tienda).title(resources.getString(R.string.tiendaMusica)))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(tienda))
         enableLocation()
         mMap.animateCamera(
@@ -76,7 +76,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private fun pedirPermisos(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) || ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)){
-            Toast.makeText(requireContext(), "Debe activar los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.darPermisos), Toast.LENGTH_SHORT).show()
         }else{
             requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), PERMISO_CODE)
         }
@@ -106,7 +106,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 return
             }
             mMap.isMyLocationEnabled = false
-            Toast.makeText(requireContext(), "Permisos necesarios para la app, activelos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.darPermisos), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -137,7 +137,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     }
                     mMap.isMyLocationEnabled = true
                 }else{
-                    Toast.makeText(requireContext(), "Has rechazado los permisos", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
                 }
             }
         }
