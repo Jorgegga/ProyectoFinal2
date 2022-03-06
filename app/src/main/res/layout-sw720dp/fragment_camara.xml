@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".camara.CamaraFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#192229">
+
+        <ImageView
+            android:id="@+id/ivCamara"
+            android:layout_width="440dp"
+            android:layout_height="485dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btnCamara"
+            android:layout_width="320dp"
+            android:layout_height="191dp"
+            android:layout_marginTop="160dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/tvCambio"
+            android:textColor="#C8CDD0"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCamara" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
