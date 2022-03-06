@@ -117,7 +117,8 @@ class CamaraFragment : Fragment() {
     }
 
     private fun isPermisosConcedidos(): Boolean {
-        return (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+        return (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
     }
 
     override fun onRequestPermissionsResult(
@@ -127,7 +128,7 @@ class CamaraFragment : Fragment() {
     ) {
         when(requestCode){
             PERMISO_CODE->{
-                if(grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+                if(grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)){
                     tomarFoto()
                 }else{
                     Toast.makeText(context, resources.getString(R.string.rechazarPermisos), Toast.LENGTH_SHORT).show()
@@ -138,8 +139,9 @@ class CamaraFragment : Fragment() {
 
     fun permisosCamara(){
         var checkPermisos = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-        if(checkPermisos != PackageManager.PERMISSION_GRANTED){
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), PERMISO_CODE)
+        var checkPermisos2 = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+        if(checkPermisos != PackageManager.PERMISSION_GRANTED || checkPermisos2 !=PackageManager.PERMISSION_GRANTED){
+            requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE), PERMISO_CODE)
         }else{
             Toast.makeText(requireContext(), resources.getString(R.string.noHasProporcionadoPermisos), Toast.LENGTH_SHORT).show()
         }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -34,10 +35,10 @@ class WebFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnListeners()
         buscarWeb()
-        onBackPressed()
     }
 
     private fun buscarWeb() {
+
         binding.webview.webViewClient = object : WebViewClient(){
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
@@ -62,11 +63,6 @@ class WebFragment : Fragment() {
     }
 
 
-    fun onBackPressed(){
-        if(binding.webview.canGoBack()){
-            binding.webview.goBack()
-        }
-    }
 
     private fun btnListeners() {
         binding.swiperefresh.setOnRefreshListener {

@@ -20,11 +20,8 @@ import java.io.IOException
 
 class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
     private val binding = MusicaLayoutBinding.bind(v)
-    lateinit var db: FirebaseDatabase
-    lateinit var reference: DatabaseReference
 
     fun render(musica : ReadMusica){
-        initDb()
         binding.tvTitulo.text = musica.nombre
         binding.tvAlbum.text = musica.autor
         binding.btnPlay.setOnClickListener {
@@ -36,8 +33,4 @@ class MusicaViewHolder(v: View ): RecyclerView.ViewHolder(v){
         }
     }
 
-    private fun initDb(){
-        db = FirebaseDatabase.getInstance("https://practicafinal2jgga-default-rtdb.firebaseio.com/")
-        reference = db.getReference("musica")
-    }
 }

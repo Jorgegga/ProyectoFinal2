@@ -51,10 +51,10 @@
         android:background="#192229"
         android:visibility="visible"
         app:headerLayout="@layout/header_navigation_drawer"
+        app:itemBackground="@drawable/drawer_list_selector"
         app:itemTextColor="#C8CDD0"
         app:menu="@menu/navigation_drawer"
         app:subheaderColor="#C8CDD0"
-        app:itemBackground="@drawable/drawer_list_selector"
         tools:visibility="gone" />
 
 
